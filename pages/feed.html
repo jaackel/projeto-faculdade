@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/feed.css">
+    <title>ShareMind — Estude pela Rede Social</title>
+</head>
+<body>
+
+    <!-- SIDEBAR NAV -->
+    <nav class="sidebar_nav">
+        <div class="nav_logo">S<span>M</span></div>
+        <div class="nav_items">
+            <button class="nav_btn active" title="Feed">🏠</button>
+            <button class="nav_btn" title="Buscar">🔍</button>
+            <button class="nav_btn" title="Notificações">🔔</button>
+            <button class="nav_btn" title="IA Tutora">🧠</button>
+            <button class="nav_btn" title="Configurações">⚙️</button>
+        </div>
+        <div class="nav_avatar">
+            <img src="../assets/img/fotoPerfilPauloFischer.png" alt="Perfil">
+        </div>
+    </nav>
+
+    <!-- APP LAYOUT -->
+    <div class="app_layout">
+
+        <!-- PAINEL ESQUERDO -->
+        <aside class="left_panel">
+            <div class="profile_card">
+                <div class="profile_cover"></div>
+                <img class="profile_avatar" src="../assets/img/fotoPerfilPauloFischer.png" alt="Avatar">
+                <h3 class="profile_name">Paulo Fischer</h3>
+                <p class="profile_role">Dev Full Stack · PUCRS</p>
+                <div class="profile_stats">
+                    <div class="stat">
+                        <span class="stat_num">128</span>
+                        <span class="stat_label">Artigos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat_num">2.4k</span>
+                        <span class="stat_label">Conexões</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat_num">18</span>
+                        <span class="stat_label">Cursos</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Tópicos — renderizado pelo JS -->
+            <div class="topic_nav" id="topicNav"></div>
+        </aside>
+
+        <!-- FEED CENTRAL -->
+        <main class="feed_container">
+
+            <!-- Header mobile -->
+            <div class="mobile_header">
+                <h1 class="logo_text">Share<span>Mind</span></h1>
+                <input type="text" class="search_input" placeholder="Buscar...">
+                <img src="../assets/icons/notificationIconWhite.png" class="icon_btn" alt="Notificações">
+            </div>
+
+            <!-- Busca desktop -->
+            <div class="desktop_search">
+                <input type="text" class="search_input" placeholder="Buscar artigos, pessoas, tópicos...">
+            </div>
+
+            <!-- FEED 2D: vertical = tópico | horizontal = post -->
+            <div id="feed-2d"></div>
+        </main>
+
+        <!-- PAINEL DIREITO -->
+        <aside class="right_panel">
+            <div class="panel_card">
+                <h4>Talvez você conheça</h4>
+                <div class="suggestion_list">
+                    <div class="suggestion">
+                        <img src="https://i.pravatar.cc/40?img=11" alt="">
+                        <div>
+                            <strong>Beatriz Lopes</strong>
+                            <p>Ciência da Computação · UNICAMP</p>
+                        </div>
+                        <button class="connect_btn">Conectar</button>
+                    </div>
+                    <div class="suggestion">
+                        <img src="https://i.pravatar.cc/40?img=12" alt="">
+                        <div>
+                            <strong>Rafael Moura</strong>
+                            <p>Engenharia de Software · USP</p>
+                        </div>
+                        <button class="connect_btn">Conectar</button>
+                    </div>
+                    <div class="suggestion">
+                        <img src="https://i.pravatar.cc/40?img=13" alt="">
+                        <div>
+                            <strong>Camila Torres</strong>
+                            <p>Sistemas de Informação · FGV</p>
+                        </div>
+                        <button class="connect_btn">Conectar</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- MODAL COMENTÁRIOS (bottom sheet) -->
+    <div id="cm-modal" class="cm-hidden">
+        <div class="cm-backdrop" onclick="closeComments()"></div>
+        <div class="cm-sheet">
+            <div class="cm-header">
+                <span>Comentários</span>
+                <button class="cm-close" onclick="closeComments()">✕</button>
+            </div>
+            <div class="cm-list" id="cm-list"></div>
+            <div class="cm-input-row">
+                <input type="text" id="cm-text" class="comment_input" placeholder="Adicionar comentário...">
+                <button class="submit_btn" onclick="submitComment()">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STORY VIEWER -->
+    <div id="storyViewer" class="hidden">
+        <img id="storyImg" alt="Story">
+    </div>
+
+    <script src="../js/feed.js"></script>
+</body>
+</html>
